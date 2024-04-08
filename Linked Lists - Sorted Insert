@@ -1,0 +1,16 @@
+def sorted_insert(head, data):
+    new_node = Node(data)
+    
+    # Case when the list is empty or the data to be inserted is smaller than the first node
+    if head is None or head.data >= data:
+        new_node.next = head
+        return new_node
+    
+    current = head
+    while current.next is not None and current.next.data < data:
+        current = current.next
+    
+    new_node.next = current.next
+    current.next = new_node
+    
+    return head
