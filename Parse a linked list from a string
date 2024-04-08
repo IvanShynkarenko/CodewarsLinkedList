@@ -1,0 +1,16 @@
+def linked_list_from_string(string):
+    if string == "null" or string == "NULL" or string == "nil" or string == "nullptr" or string == "null()" or string == "None" or string is None:
+        return None
+    
+    values = string.split(" -> ")
+    head = Node(int(values[0]))
+    current = head
+    
+    for value in values[1:]:
+        if value == "null" or value == "NULL" or value == "nil" or value == "nullptr" or value == "null()" or value == "None":
+            current.next = None
+        else:
+            current.next = Node(int(value))
+            current = current.next
+    
+    return head
