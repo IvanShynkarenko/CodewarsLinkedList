@@ -1,0 +1,23 @@
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def loop_size(head):
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next #speed x2
+        
+        if slow == fast:
+            loop_length = 1
+            slow = slow.next
+            while slow != fast:
+                loop_length += 1
+                slow = slow.next
+            return loop_length
+    
+    #no loop
+    return 0
